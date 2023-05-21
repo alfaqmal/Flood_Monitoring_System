@@ -10,6 +10,7 @@
 
       function drawChart() {
         var chartData = <?php echo json_encode($chartData); ?>;
+       
 
         var data = google.visualization.arrayToDataTable([
           ['Created_at', 'Distance'],
@@ -32,4 +33,7 @@
     <div id="curve_chart" style="width: 1500px; height: 900px"></div>
   </body>
 </html>
+
+
+
 
