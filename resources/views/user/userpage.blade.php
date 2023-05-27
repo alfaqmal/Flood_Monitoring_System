@@ -19,15 +19,17 @@
 	<script type="text/javascript" src="waterlevel/js/boostrap.min.js"></script>
 
 	<style type="text/css">
+
 		.tangki {
 			border-style: solid;
 			width: 300px;
 			height: 300px;
-			left: 50%;
+			left: 35%;
 			transform: translate(-50%);
 			position: sticky;
 			border-bottom-left-radius: 20px;
 			border-bottom-right-radius: 20px;
+			float: left;
 
 		}
 
@@ -41,8 +43,38 @@
 			border-bottom-right-radius: 10px;
 			background-color: blue;
 		}
-	</style>
+	
 
+
+		.tangki2 {
+			border-style: solid;
+			width: 300px;
+			height: 300px;
+			left: 110%;
+			transform: translate(-50%);
+			position: sticky;
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+			float: left;
+  			margin-left: 10%;
+			
+			
+		}
+
+		.air2 {
+			
+			left: 50%;
+			bottom: 0px;
+			transform: translate(-50%);
+			position: absolute;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			background-color: blue;
+		}
+	
+		</style>
+	
+<!--1st container-->
 <script type="text/javascript">
 		$(document).ready(function() {
 			setInterval(function() {
@@ -67,32 +99,60 @@
 		});
 	</script>
 
+<!--2nd container-->
+<script type="text/javascript">
+		$(document).ready(function() {
+			setInterval(function() {
+				$.get("{{ url("bacasuhu") }}", function(data) {
+					var tinggi_air = parseFloat(data); // Data received
+					var maxHeight = 100; 
+					var alertHeight = 90;
+					var minHeight = 0; 
+					var actualdistance = maxHeight - minHeight; // Calculate the total height range
+					var percentage_tinggi_air = 100 - ((tinggi_air - minHeight) / actualdistance) * 100;
+					if (percentage_tinggi_air > alertHeight) {
+						percentage_tinggi_air = alertHeight; // Set the height to the maximum value if it exceeds the limit
+						alert('Water Level Reach Limit');
+					}
+					$(".air2").css("height", percentage_tinggi_air + "%");
+				});
+
+				$.get("{{ url("bacatempat") }}", function(data) {
+					$("#placename2").text(data); // Update the placename
+				});
+			}, 1000);
+		});
+	</script>
+
 </head>
 <body>
 
 	<!-- Web Application -->
 	<div class="container" style="text-align: center;" >
-		<!--<img src="images/logo.png" style="width: 200px; margin-top:25px;">-->
+		
 		<img src="{{ asset('images/logo.png') }}" style="width: 200px; margin-top:25px;">
 		<h3>Water Level Monitoring</h3>
-		<h4>Place : <span id="placename"> </span></h4>
 
+			<!-- 1st -->
 			<!-- Body Water Level -->
-			<div class="tangki">
+			<div class="tangki">Place : <span id="placename"> </span>
 				<!-- aiR -->
-			
-			 	<!--height should be a value from databse-->
-
 				<span class="air" style="width: 100%; color: red;"></span>
-    
-   	 		</div>
+			</div>
 
-			<br><a href="http://localhost/finalyearproject/public/chart" class="btn btn-primary">Record</a>
-
-		
+		 		
+			<!-- 2nd -->
+			<!-- Body Water Level -->
+			<div class="tangki2">Place : <span id="placename2"> </span>
+				<!-- aiR -->
+				<span class="air2" style="width: 100%; color: red;"></span>
+			</div> 
+	
 	</div>
 
-	
+	<div class="container" style="text-align: center;" >
+	<br><a href="http://localhost/finalyearproject/public/chart" class="btn btn-primary">Record</a></br>
+	</div>
 
 </body>
 </html>

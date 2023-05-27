@@ -8,7 +8,7 @@ use App\Models\graponly;
 
 class chart extends Controller
 {
-    public function graph()
+   /* public function graph()
     {
         $data = graponly::select('distance', 'created_at')->get();
         
@@ -21,5 +21,22 @@ class chart extends Controller
         $chartData = $formattedData;
         
         return view('user.graph', compact('chartData'));
+    }*/
+
+    public function graph()
+    {
+        $data = graponly::select('distance', 'created_at')->get();
+        
+        $chartData = [];
+
+        foreach ($data as $val) {
+            $chartData[] = [
+                'Created_at' => $val->created_at->toDateTimeString(),
+                'Distance' => $val->distance,
+            ];
+        }
+        
+        return view('user.graph', compact('chartData'));
     }
+
 }
