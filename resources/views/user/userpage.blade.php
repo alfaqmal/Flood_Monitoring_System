@@ -43,6 +43,12 @@
 			border-bottom-right-radius: 10px;
 			background-color: blue;
 		}
+		.button-container {
+    		position: absolute;
+   			top: 120%;
+    		left: 50%;
+    		transform: translate(-50%, -50%);
+		}
 	
 
 
@@ -103,7 +109,7 @@
 <script type="text/javascript">
 		$(document).ready(function() {
 			setInterval(function() {
-				$.get("{{ url("bacasuhu") }}", function(data) {
+				$.get("{{ url("bacasuhu2") }}", function(data) {
 					var tinggi_air = parseFloat(data); // Data received
 					var maxHeight = 100; 
 					var alertHeight = 90;
@@ -117,7 +123,7 @@
 					$(".air2").css("height", percentage_tinggi_air + "%");
 				});
 
-				$.get("{{ url("bacatempat") }}", function(data) {
+				$.get("{{ url("bacatempat2") }}", function(data) {
 					$("#placename2").text(data); // Update the placename
 				});
 			}, 1000);
@@ -138,21 +144,23 @@
 			<div class="tangki">Place : <span id="placename"> </span>
 				<!-- aiR -->
 				<span class="air" style="width: 100%; color: red;"></span>
+				<div class="button-container">
+       				 <a href="http://localhost/finalyearproject/public/chart" class="btn btn-primary">Record</a>
+    			</div>
 			</div>
 
-		 		
+				
 			<!-- 2nd -->
 			<!-- Body Water Level -->
 			<div class="tangki2">Place : <span id="placename2"> </span>
 				<!-- aiR -->
 				<span class="air2" style="width: 100%; color: red;"></span>
+				<div class="button-container">
+       				 <a href="http://localhost/finalyearproject/public/chart2" class="btn btn-primary">Record</a>
+    			</div>
 			</div> 
 	
-	</div>
-
-	<div class="container" style="text-align: center;" >
-	<br><a href="http://localhost/finalyearproject/public/chart" class="btn btn-primary">Record</a></br>
-	</div>
+	
 
 </body>
 </html>

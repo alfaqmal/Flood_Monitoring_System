@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\datasave;
-use App\Models\graponly;
+use App\Models\datasave2;
+use App\Models\graponly2;
 
-class chart extends Controller
+class chart2 extends Controller
 {
-
-    public function graph()
+    public function graph2()
     {
-        $data = graponly::select('distance', 'created_at')->get();
+        $data = graponly2::select('distance', 'created_at')->get();
         
         $chartData = [];
 
@@ -22,7 +21,6 @@ class chart extends Controller
             ];
         }
         
-        return view('user.graph', compact('chartData'));
+        return view('user.graph2', compact('chartData'));
     }
-
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Data;
 
 
+
 class DataController extends Controller
 {
     public function bacasuhu()
