@@ -30,9 +30,15 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <style>
+         .logo img {
+            display: block;
+            margin: 0 auto;
+         }
+      </style>
    </head>
    <!-- body -->
-   <body class="main-layout">
+  <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
          <div class="loader"><img src="images/loading.gif" alt="#" /></div>
@@ -46,26 +52,14 @@
          <div id="content">
             <!-- header -->
             <header>
-               <!-- header inner -->
-               <div class="menu_sitbar">
-                  <ul class="menu">
-                     <li><button type="button" id="sidebarCollapse">
-                        <img src="images/menu_icon.png" alt="#" />
-                        </button></a>
-                     </li>
-                  </ul>
-               </div>
-               <div class="header_full_banner">
+              <div class="header_full_banner">
                   <div class="header">
                      <div class="container">
                         <div class="row">
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                               <div class="full">
                                  <div class="center-desk">
-                                 <div class="logo">
-                                       <a href="index.html"><img src="images/logo.png" alt="#" /></a>
-                                       
-                                    </div>
+                                 <div class="logo text-center"></div>
                                  </div>
                               </div>
                            </div>
@@ -74,14 +68,17 @@
                         </div>
                      </div>
                   </div>
-                  <!-- end header inner -->
+                 <!-- end header inner -->
                   <!-- end header -->
                   <!-- banner -->
                   <section class="banner_main">
                      <div class="container">
                         <div class="row d_flex">
                            <div class="col-md-126">
-                              <div class="text-bg">
+                                 <div class="col-md-12 text-center">
+                                    <a><img src="images/logo.png" style="width: 600px; height: 400px;"></a>
+                                 </div>
+                                 <div class="text-bg">
                                  <h1>Flood Warning System</h1>
                                  @if (Route::has('login'))
                                      <div class="">
