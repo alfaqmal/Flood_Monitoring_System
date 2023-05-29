@@ -171,6 +171,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Livewire\LivewireServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
      
     ])->toArray(),
@@ -188,6 +189,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
        
     ])->toArray(),
 

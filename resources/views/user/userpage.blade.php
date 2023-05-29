@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="watrelevel/jquery/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="waterlevel/css/bootstrap.min.css">
 	<script type="text/javascript" src="waterlevel/js/boostrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 	<style type="text/css">
 
@@ -82,6 +83,7 @@
 	
 <!--1st container-->
 <script type="text/javascript">
+
 		$(document).ready(function() {
 			setInterval(function() {
 				$.get("{{ url("bacasuhu") }}", function(data) {
@@ -93,7 +95,15 @@
 					var percentage_tinggi_air = 100 - ((tinggi_air - minHeight) / actualdistance) * 100;
 					if (percentage_tinggi_air > alertHeight) {
 						percentage_tinggi_air = alertHeight; // Set the height to the maximum value if it exceeds the limit
-						alert('Water Level Reach Limit');
+						$.get("{{ url("bacatempat") }}", function(placename) {
+								var alertText = "Water Level Reach Limit at " + placename + "!";
+								swal({
+									title: alertText,
+									icon: "warning",
+									dangerMode: true
+                           		 	
+								});
+							});
 					}
 					$(".air").css("height", percentage_tinggi_air + "%");
 				});
@@ -104,6 +114,7 @@
 			}, 1000);
 		});
 	</script>
+
 
 <!--2nd container-->
 <script type="text/javascript">
@@ -118,7 +129,14 @@
 					var percentage_tinggi_air = 100 - ((tinggi_air - minHeight) / actualdistance) * 100;
 					if (percentage_tinggi_air > alertHeight) {
 						percentage_tinggi_air = alertHeight; // Set the height to the maximum value if it exceeds the limit
-						alert('Water Level Reach Limit');
+						$.get("{{ url("bacatempat2") }}", function(placename2) {
+							var alertText = "Water Level Reach Limit at " + placename2 + "!";
+								swal({
+									title: alertText,
+									icon: "warning",
+									dangerMode: true
+								});
+							});
 					}
 					$(".air2").css("height", percentage_tinggi_air + "%");
 				});
@@ -129,6 +147,7 @@
 			}, 1000);
 		});
 	</script>
+	
 
 </head>
 <body>
