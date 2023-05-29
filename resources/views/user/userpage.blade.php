@@ -87,14 +87,12 @@
 		$(document).ready(function() {
 			setInterval(function() {
 				$.get("{{ url("bacasuhu") }}", function(data) {
-					var tinggi_air = parseFloat(data); // Data received
-					var maxHeight = 100; 
-					var alertHeight = 90;
-					var minHeight = 0; 
-					var actualdistance = maxHeight - minHeight; // Calculate the total height range
-					var percentage_tinggi_air = 100 - ((tinggi_air - minHeight) / actualdistance) * 100;
+					var tinggi_air = parseFloat(data); 
+					var containerHeight = 20; 
+      				var actualDistance = 100; 
+					var alertHeight = 85;
+					var percentage_tinggi_air =100 - ((tinggi_air / containerHeight) * actualDistance).toFixed(2);
 					if (percentage_tinggi_air > alertHeight) {
-						percentage_tinggi_air = alertHeight; // Set the height to the maximum value if it exceeds the limit
 						$.get("{{ url("bacatempat") }}", function(placename) {
 								var alertText = "Water Level Reach Limit at " + placename + "!";
 								swal({
@@ -121,14 +119,12 @@
 		$(document).ready(function() {
 			setInterval(function() {
 				$.get("{{ url("bacasuhu2") }}", function(data) {
-					var tinggi_air = parseFloat(data); // Data received
-					var maxHeight = 100; 
-					var alertHeight = 90;
-					var minHeight = 0; 
-					var actualdistance = maxHeight - minHeight; // Calculate the total height range
-					var percentage_tinggi_air = 100 - ((tinggi_air - minHeight) / actualdistance) * 100;
+					var tinggi_air = parseFloat(data); 
+					var containerHeight = 20; 
+      				var actualDistance = 100; 
+					var alertHeight = 85;
+					var percentage_tinggi_air =100 - ((tinggi_air / containerHeight) * actualDistance).toFixed(2);
 					if (percentage_tinggi_air > alertHeight) {
-						percentage_tinggi_air = alertHeight; // Set the height to the maximum value if it exceeds the limit
 						$.get("{{ url("bacatempat2") }}", function(placename2) {
 							var alertText = "Water Level Reach Limit at " + placename2 + "!";
 								swal({
