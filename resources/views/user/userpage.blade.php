@@ -88,7 +88,7 @@
 			setInterval(function() {
 				$.get("{{ url("bacasuhu") }}", function(data) {
 					var tinggi_air = parseFloat(data); 
-					var containerHeight = 20; 
+					var containerHeight = 15; 
       				var actualDistance = 100; 
 					var alertHeight = 85;
 					var percentage_tinggi_air =100 - ((tinggi_air / containerHeight) * actualDistance).toFixed(2);
@@ -120,7 +120,7 @@
 			setInterval(function() {
 				$.get("{{ url("bacasuhu2") }}", function(data) {
 					var tinggi_air = parseFloat(data); 
-					var containerHeight = 20; 
+					var containerHeight = 15; 
       				var actualDistance = 100; 
 					var alertHeight = 85;
 					var percentage_tinggi_air =100 - ((tinggi_air / containerHeight) * actualDistance).toFixed(2);
